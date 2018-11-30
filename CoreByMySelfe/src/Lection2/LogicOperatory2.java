@@ -69,7 +69,7 @@ public class LogicOperatory2 {
         System.out.println("x = " + x + "   result = " + result);
 
         // Time 1:38:00
-        
+
 
 
 
