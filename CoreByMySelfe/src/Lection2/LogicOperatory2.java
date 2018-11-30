@@ -68,6 +68,9 @@ public class LogicOperatory2 {
         result = isLeft || isCentr || isRigth;
         System.out.println("x = " + x + "   result = " + result);
 
+        // Time 1:38:00
+        
+
 
 
 
