@@ -10,7 +10,7 @@ public class LogicOperatory2 {
 
         // Оператор && - "логическое И" (логичесчкое умножение)
 
-        boolean resalt  = t && f;
+        boolean result  = t && f;
 
         // 0 && 0 = 0
         // 1 && 0 = 0
@@ -44,18 +44,31 @@ public class LogicOperatory2 {
         // Проверим, является ли Х в диапазоне от 1000 до 2000
 
         int x = 20;
-        resalt = x > 1000 && x < 2000;
+        result = x > 1000 && x < 2000;
 
-        System.out.println("x = " + x  + " (1000 : 2000) = " + resalt);
+        System.out.println("x = " + x  + " (1000 : 2000) = " + result);
 
         // Проверим, чтоб Х не входил в диапахон от 1000 до 2000
 
-        System.out.println("x = " + x  + " !(1000 : 2000) = " + !resalt);
+        System.out.println("x = " + x  + " !(1000 : 2000) = " + !result);
         // или
-        resalt = x < 1000 || x > 2000;
-        System.out.println("x = " + x  + " !(1000 : 2000) = " + resalt);
+        result = x < 1000 || x > 2000;
+
+        System.out.println();
 
         // Time 1:30:00
+
+        // Проверить, лежит ли Х в диаппазоне от 0 до 10000
+        // и при этом не входит в диаппазон от 1000 до 2000 и от 4000 до 5000
+
+        boolean isLeft = x < 1000;
+        boolean isCentr = x > 2000 && x < 4000;
+        boolean isRigth = x > 0;
+
+        result = isLeft || isCentr || isRigth;
+        System.out.println("x = " + x + "   result = " + result);
+
+
 
 
 
