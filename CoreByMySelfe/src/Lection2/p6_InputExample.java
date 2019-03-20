@@ -2,7 +2,7 @@ package Lection2;
 
 import java.util.Scanner;
 
-public class InputExample {
+public class p6_InputExample {
     public static void main(String[] args) {
          // ----------------------------------------------------------
         Scanner scaner = new Scanner(System.in);
@@ -23,7 +23,7 @@ public class InputExample {
         System.out.println("Введите RedZoneLeft RedZoneRight RedZone2Left RedZone2Right");
         // в одну строку можно вводить значения разных переменных и раздялять их пробелом.
         // считывание начнется после нажатия Enter
-        
+
         int RedZoneLeft = scaner.nextInt();
         int RedZoneRight = scaner.nextInt();
         int RedZone2Left = scaner.nextInt();

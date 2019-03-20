@@ -1,7 +1,7 @@
 package Lection2;
 
 // Time 35:00
-public class Operands {
+public class p2_Operands {
 
     public static void main(String[] args) {
 

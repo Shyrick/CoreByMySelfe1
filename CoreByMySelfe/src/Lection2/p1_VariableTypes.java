@@ -1,6 +1,6 @@
 package Lection2;
 
-public class VariableTypes {
+public class p1_VariableTypes {
 
     public static void main(String[] args) {
 
