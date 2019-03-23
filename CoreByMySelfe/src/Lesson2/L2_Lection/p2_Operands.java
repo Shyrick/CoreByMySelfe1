@@ -16,10 +16,10 @@ public class p2_Operands {
         x *= b;
 
         int c = b / a;
-        //System.out.println("c = " + c);   // вывод 2 т.к. с это int
+        //System.out.println("c = " + c);   // вывод 2 т.к. с это int ( нет дробной части)
 
         float cс = b / a;
-        //System.out.println("cc = " + cc); // вывод 2.0 т.к. b и a это int
+        //System.out.println("cc = " + cc); // вывод 2.0 т.к. b и a это int ( нет дробной части)
 
         float ссс = (float) b / a; // (float) b - приведение int b к типу float
         System.out.println("ccc = " + ссс); // вывод 2.5
