@@ -1,4 +1,4 @@
-package Lection2;
+package Lesson2.L2_Lection;
 
 // Time 35:00
 public class p2_Operands {

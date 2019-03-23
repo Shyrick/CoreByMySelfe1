@@ -1,4 +1,4 @@
-package Lection2;
+package Lesson2.L2_Lection;
 
 public class p3_LogicOperatory {
 
