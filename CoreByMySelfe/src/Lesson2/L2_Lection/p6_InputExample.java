@@ -26,6 +26,8 @@ public class p6_InputExample {
         // в одну строку можно вводить значения разных переменных и раздялять их пробелом.
         // считывание начнется после нажатия Enter
 
+        // Для проверки "от дурака" есть boolean hasNextInt() и т.д. для других типов
+
         int RedZoneLeft = scaner.nextInt();
         int RedZoneRight = scaner.nextInt();
         int RedZone2Left = scaner.nextInt();
