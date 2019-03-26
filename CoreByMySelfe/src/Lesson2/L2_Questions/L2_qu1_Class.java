@@ -2,7 +2,7 @@ package Lesson2.L2_Questions;
 
 import java.util.Scanner;
 
-public class L2_question {
+public class L2_qu1_Class {
 
     // Time 20:00
 
@@ -21,7 +21,10 @@ public class L2_question {
 //                e.printStackTrace();
 //            }
 //
-            // STOP 34:00
+            // HOTKEYS:
+        // Ctrl+Alt+L - выравнивает код
+        // Ctrl+D - дублирует строку
+
 //        }
 
 
