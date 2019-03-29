@@ -20,6 +20,6 @@ public class L2_qu3_InternetReadExample {
         while (scanner.hasNextLine()){
             System.out.println(scanner.nextLine());
         }
-//STOP 59:00
+
     }
 }

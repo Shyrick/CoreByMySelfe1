@@ -10,6 +10,8 @@ public class L2_qu1_Class {
         Scanner scanner = new Scanner(System.in);
 
 
+//       НЕ ПРАВИЛЬНО!!!  ПРАВИЛЬНО СДЕЛАНО В КЛАССЕ CheckInputExample
+
 //        while (true){
 //            try{
 //                System.out.println("Введите число");
@@ -21,6 +23,8 @@ public class L2_qu1_Class {
 //                e.printStackTrace();
 //            }
 //
+
+
             // HOTKEYS:
         // Ctrl+Alt+L - выравнивает код
         // Ctrl+D - дублирует строку
