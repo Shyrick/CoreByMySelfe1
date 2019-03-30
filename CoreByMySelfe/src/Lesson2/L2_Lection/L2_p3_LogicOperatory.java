@@ -1,6 +1,6 @@
 package Lesson2.L2_Lection;
 
-public class p3_LogicOperatory {
+public class L2_p3_LogicOperatory {
 
 // Time 01:11:00
     public static void main(String[] args) {

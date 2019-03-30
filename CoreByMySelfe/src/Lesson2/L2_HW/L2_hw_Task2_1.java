@@ -2,7 +2,7 @@ package Lesson2.L2_HW;
 
 import java.util.Scanner;
 
-public class Task2_1 {
+public class L2_hw_Task2_1 {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner (System.in);

@@ -1,6 +1,6 @@
 package Lesson2.L2_Lection;
 
-public class p5_BinaryOperator {
+public class L2_p5_BinaryOperator {
 
     public static void main(String[] args) {
 

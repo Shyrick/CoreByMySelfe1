@@ -2,7 +2,7 @@ package Lesson2.L2_Lection;
 
 import java.util.Scanner;
 
-public class p6_InputExample {
+public class L2_p6_InputExample {
 
     // Time 2:03
     public static void main(String[] args) {
