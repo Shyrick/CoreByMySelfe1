@@ -1,4 +1,4 @@
-package Lesson3;
+package Lesson3.If_Else;
 
 import Lesson2.L2_Lection.*;
 

@@ -1,4 +1,4 @@
-package Lesson3;
+package Lesson3.If_Else;
 
 import java.util.Scanner;
 
