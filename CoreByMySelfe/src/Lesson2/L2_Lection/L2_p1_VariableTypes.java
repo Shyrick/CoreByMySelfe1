@@ -15,7 +15,7 @@ public class L2_p1_VariableTypes {
         double f = 2000.0543; //дробное 64 bit с плавающей точкой. Указывается явно буквой d
 
 
-        boolean g = true; // 1 bit логический тип true или false
+        boolean g; // 1 bit логический тип true или false
 
         char h = 'h' ; // 16 bit от 0 до 65535 .Различные символы
 
@@ -25,4 +25,5 @@ public class L2_p1_VariableTypes {
 
 
     }
+
 }

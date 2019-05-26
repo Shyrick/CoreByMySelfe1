@@ -8,7 +8,7 @@ public class L2_p4_LogicOperatory2 {
         boolean t = true;
         boolean f = false;
 
-        // Оператор && - "логическое И" (логичесчкое умножение)
+        // Оператор && - "логическое И" (логическое умножение)
 
         boolean result  = t && f;
 
@@ -16,7 +16,7 @@ public class L2_p4_LogicOperatory2 {
         // 1 && 0 = 0
         // 0 && 1 = 0
         // 1 && 1 = 1
-
+        System.out.println(result);
         System.out.println("f && f = " + (f && f));
         System.out.println("t && f = " + (t && f));
         System.out.println("f && t = " + (f && t));
@@ -43,7 +43,7 @@ public class L2_p4_LogicOperatory2 {
 
         // Проверим, является ли Х в диапазоне от 1000 до 2000
 
-        int x = 20;
+        int x = 1050;
         result = x > 1000 && x < 2000;
 
         System.out.println("x = " + x  + " (1000 : 2000) = " + result);

@@ -9,11 +9,11 @@ public class L2_p2_Operands {
         int b = 5;
         int x = a + b;
 
-        x = x - b;
-        x -= b;
-        x += b;
-        x /= b;
-        x *= b;
+//        x = x - b;
+//        x -= b;
+//        x += b;
+//        x /= b;
+//        x *= b;
 
         int c = b / a;
         //System.out.println("c = " + c);   // вывод 2 т.к. с это int ( нет дробной части)
@@ -22,7 +22,9 @@ public class L2_p2_Operands {
         //System.out.println("cc = " + cc); // вывод 2.0 т.к. b и a это int ( нет дробной части)
 
         float ссс = (float) b / a; // (float) b - приведение int b к типу float
-        System.out.println("ccc = " + ссс); // вывод 2.5
+
+        System.out.println(x);
+//        System.out.println("ccc = " + ссс); // вывод 2.5
         // Time 40:38
     }
 }
