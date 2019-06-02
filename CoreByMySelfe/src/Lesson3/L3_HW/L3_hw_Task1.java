@@ -12,7 +12,7 @@ public class L3_hw_Task1 {
         int length = scanner.nextInt();
         int [] array = new int [length];
 
-        System.out.println("Ввдеите массив");
+        System.out.println("Ввдеите массив указанной длины");
 
         for (int i = 0; i < array.length ; i++) {
             array [i] = scanner.nextInt();
@@ -39,9 +39,24 @@ public class L3_hw_Task1 {
             if (array [i] == 5){
                 count5 ++;
             }
-
         }
         System.out.println("Количество повторений числа 5 = " + count5);
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 1; j < (array.length - i); j++) {
+                if (array[j - 1] > array[j]) {
+                    //swap elements
+                    int temp = array[j - 1];
+                    array[j - 1] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+        System.out.println("Массив после сортировки: ");
+
+        for (int value:array) {
+            System.out.print(value + " ");
+        }
     }
 
 }

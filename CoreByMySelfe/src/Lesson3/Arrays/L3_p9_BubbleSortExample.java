@@ -19,7 +19,7 @@ public class L3_p9_BubbleSortExample {
         for (int i = 0; i < array.length ; i++) {
             array [i] = scanner.nextInt();
         }
-
+// Сортировка пузырьком
         for (int i = 0; i < array.length; i++) {
             for (int j = 1; j < (array.length - i); j++) {
                 if (array[j - 1] > array[j]) {
