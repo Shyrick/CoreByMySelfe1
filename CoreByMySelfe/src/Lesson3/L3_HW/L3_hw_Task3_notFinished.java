@@ -2,7 +2,7 @@ package Lesson3.L3_HW;
 
 import java.util.Scanner;
 
-public class L3_hw_Task3 {
+public class L3_hw_Task3_notFinished {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
