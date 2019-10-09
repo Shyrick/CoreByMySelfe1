@@ -1,5 +1,7 @@
 package Lesson4.L4_HW;
 
+import java.util.Scanner;
+
 public class L4_hw_Task2 {
     // Написать функцию drawRectangle которая рисует в консоли прямоугольник из символов '+'
 //       Аргументы функции: ширина прямоугольника в символах, высота прямоугольника в символах
@@ -23,6 +25,22 @@ public class L4_hw_Task2 {
 //        + + +
 
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("ВВедите ширину прямоугольника");
+        int length = scanner.nextInt();
+        System.out.println("ВВедите высоту прямоугольника");
+        int higth = scanner.nextInt();
+
+        for (int i = 0; i <length ; i++) {
+           if (i>0) System.out.println();
+            for (int j = 0; j < higth ; j++) {
+                System.out.print("+");
+
+            }
+
+        }
+
 
     }
 }
