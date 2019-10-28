@@ -3,6 +3,8 @@ package Lesson5.FX;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -18,14 +20,34 @@ public class MainFX extends Application {
         launch(args); // обязательно для работы javaFX
     }
 
-        private void windowSetup(Stage primaryStage) {
-            primaryStage.setWidth(WIDTH);
-            primaryStage.setHeight(HEIGTH);
-            primaryStage.setMaxWidth(MAX_WIDTH);
-            primaryStage.setMaxHeight(MAX_HEIGTH);
-            primaryStage.setMinWidth(MIN_WIDTH);
-            primaryStage.setMinHeight(MIN_HEIGTH);
+    private void windowSetup(Stage primaryStage) {
+         primaryStage.setWidth(WIDTH);
+         primaryStage.setHeight(HEIGTH);
+         primaryStage.setMaxWidth(MAX_WIDTH);
+         primaryStage.setMaxHeight(MAX_HEIGTH);
+         primaryStage.setMinWidth(MIN_WIDTH);
+         primaryStage.setMinHeight(MIN_HEIGTH);
     }
+
+    void uISetup ( Pane root ){
+        //  Для удобства перенесли все настройки текста в отдельный метод, чтробы очисть код в методе start()
+        Text text = new Text("Hello world");
+        text.setTranslateX(10);// устанавливаем координаты места появления текста в окне
+        text.setTranslateY(20);
+        // добавим новую строку
+        text.setText(text.getText() + "\nновая строка");
+        // Создадим кнопку в окне
+        Button button = new Button("Добавить число");
+        button.setTranslateX(200);
+        button.setTranslateY(10);
+
+        button.setOnMouseClicked(event -> { // Это лямбда - метод без названия, кот. выполнится только после события (нажатие на кнопку)
+            String oldText = text.getText();
+            text.setText(oldText +"\n" + 100 );stop 43:00
+        });
+        root.getChildren().addAll(text, button); //Children - это все. что вложено в root. Добалвяем текст в root и кнопку
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -49,9 +71,14 @@ public class MainFX extends Application {
         // Если бутед - то ее нужно выносить за метод и писать как поле класса (см. выше)
         // Все настройки окна переносим в отдельный метод windowSetup()
 
-        Text text = new Text("Hello world");
-        Scene scene = new Scene();
-                stop 26:00
+        Pane root = new Pane();
+        uISetup(root);
+
+        Scene scene = new Scene(root); //Сцене в конструктор нужно передать root (объект класса Pane)
+        primaryStage.setScene(scene); // Указали сцену для primaryStage
+        //Т.е. root внутри scene, а scene внутри primaryStage
+        // Все выводы в окно делаются через root (см. выше)
+
 
         primaryStage.show(); // вызов окна
         windowSetup(primaryStage);
