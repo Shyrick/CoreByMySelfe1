@@ -4,7 +4,10 @@ package Lesson5.FX;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -36,16 +39,38 @@ public class MainFX extends Application {
         text.setTranslateY(20);
         // добавим новую строку
         text.setText(text.getText() + "\nновая строка");
+
+        // Создаем поле для ввода
+        TextField textField = new TextField("100"); // конструктор принимает парамет по умолчанию (тут число 100)
+        textField.setTranslateX(300);
+        textField.setTranslateY(10);
+        // Изменим размер текста
+        Font font = new Font(14);
+        text.setFont(font);
+
         // Создадим кнопку в окне
         Button button = new Button("Добавить число");
         button.setTranslateX(200);
         button.setTranslateY(10);
 
+        // Сделем вывод в консоль по нажатию клавиши W
+        button.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.W){
+                System.out.println("W pressed");
+            }
+        }); // НО!!! этот код работает только когда "фокус" в нашем окне наведен на кнопку
+
+
         button.setOnMouseClicked(event -> { // Это лямбда - метод без названия, кот. выполнится только после события (нажатие на кнопку)
+            String number = textField.getText();
             String oldText = text.getText();
-            text.setText(oldText +"\n" + 100 );stop 43:00
+         //text.setText(oldText +"\n" + 100 ); // добавляем число 100 к тексту с новой сроки
+          text.setText(oldText +"\n" + number );
         });
-        root.getChildren().addAll(text, button); //Children - это все. что вложено в root. Добалвяем текст в root и кнопку
+
+
+        //Добалвяем в root текст и кнопку
+        root.getChildren().addAll(text, button, textField); //Children - это все. что вложено в root.
     }
 
 
