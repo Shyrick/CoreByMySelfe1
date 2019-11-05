@@ -1,10 +1,4 @@
-package Lesson5.L5_Qustions;
-
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-
-import java.awt.*;
+package Lesson5_1.L51_Qustions;
 
 public class LambdaExample {
 
@@ -24,5 +18,22 @@ public class LambdaExample {
 //
 //        Button btn = new Button();
 //        btn.setOnMouseClicked(lambda2);
+
+        // ---------------------------------------
+        // Создаем свою лямбду
+        MyLambda myLambda1 = new MyLambda() {
+            @Override
+            public void run(String str) {
+                System.out.println("my lambda1 : " + str);
+            }
+        };
+//  myLambda1 аналогична myLambda2
+        MyLambda myLambda2 = (str) ->{
+            System.out.println("my lambda2 : " + str);
+        };
+
+        myLambda1.run("1111");
+        myLambda2.run("2222");
+
     }
 }
