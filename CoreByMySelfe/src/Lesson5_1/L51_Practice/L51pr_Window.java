@@ -3,6 +3,7 @@ package Lesson5_1.L51_Practice;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -38,8 +39,10 @@ public class L51pr_Window {
 
         root.getChildren().addAll(text);
     }
-    void addLineToRoot (Pane root, Line line){
-        root.getChildren().addAll(line);
-    }
+
+
+
+
+
 
 }
