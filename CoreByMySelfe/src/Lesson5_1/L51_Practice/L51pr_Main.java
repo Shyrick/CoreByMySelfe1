@@ -24,9 +24,13 @@ public class L51pr_Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         L51pr_Window window = new L51pr_Window();
         Pane root = new Pane();
+        Pane fractalRoot = new Pane();
+        root.getChildren().addAll(fractalRoot);
+
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         window.windowSetup(primaryStage);
+
         primaryStage.show();
 
 //        window.uISetup(root);
@@ -55,12 +59,14 @@ public class L51pr_Main extends Application {
         // Или так:
 //        line1.showPointOnLine(root, 0f);
 
-//        L51pr_Triangle tr1 = new L51pr_Triangle(p1, p2, p3);
-//        tr1.drawTriangle(root);
+        L51pr_Triangle tr1 = new L51pr_Triangle(p1, p2, p3);
+        tr1.drawTriangle(root);
 
-        L51pr_Fractal fr1 = new L51pr_Fractal(3, 0.2f );
-        fr1.
+//        L51pr_Fractal fr1 = new L51pr_Fractal(3, 0.2f );
+//        fr1.draw(fractalRoot, tr1);
 
+
+        window.FractalWindowSetup(root, fractalRoot, tr1 );
 
 
     }

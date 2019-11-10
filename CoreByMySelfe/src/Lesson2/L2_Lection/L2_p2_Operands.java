@@ -24,7 +24,7 @@ public class L2_p2_Operands {
         float ссс = (float) b / a; // (float) b - приведение int b к типу float
 
         System.out.println(x);
-//        System.out.println("ccc = " + ссс); // вывод 2.5
+       System.out.println("ccc = " + ссс); // вывод 2.5
         // Time 40:38
     }
 }

@@ -3,6 +3,8 @@ package Lesson4.L4_Practice;
 //Написать функцию которая принимает на вход массив чисел и возвращает индекс максимального числа.
 //Написать функцию которая принимает на вход массив чисел и возвращает максимальное число, используя первую функцию.
 
+import java.util.Random;
+
 public class L4_pr_Task1 {
 
     static int maxIndex (int [] arr){
@@ -23,5 +25,8 @@ public class L4_pr_Task1 {
         int[] array =  {1,7,105, 5, 6};
         System.out.println("Index of max = " + maxIndex(array));
         System.out.println("Max in array = " + maxInArray(array));
+
+
+
     }
 }
