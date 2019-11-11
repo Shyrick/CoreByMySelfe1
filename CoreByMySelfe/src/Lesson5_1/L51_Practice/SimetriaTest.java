@@ -29,13 +29,21 @@ public class SimetriaTest extends Application {
         return r;
     }
 
-    L51pr1_Point choosePoint (L51pr1_Point p1, L51pr1_Point p2, L51pr1_Point p3){
+    L51pr1_Point choosePointDirection (L51pr1_Point p1, L51pr1_Point p2, L51pr1_Point p3){
         if (random() == 1 || random() == 2)            return p1;
         else  if (random() == 3 || random() == 4)            return p2;
         else return p3;
     }
 
-    
+    public L51pr1_Point showPointOnLine (Pane root, L51pr1_Point p1, L51pr1_Point p2){
+        L51pr_Line line = new L51pr_Line(p1, p2);
+        L51pr1_Point newPoint =  line.getPointOnLine(0.5f);
+        Circle c1 = new Circle(newPoint.getX(), newPoint.getY(), 2);
+        root.getChildren().addAll(c1);
+        return newPoint;
+    }
+
+
 
     void drawPoint (Circle circle, Pane root){
 
@@ -44,7 +52,7 @@ public class SimetriaTest extends Application {
     void drawAll (int number, Pane root, L51pr1_Point p1, L51pr1_Point p2){
         for (int i = 0; i <= number ; i++) {
 
-            }
+
         }
     }
 
