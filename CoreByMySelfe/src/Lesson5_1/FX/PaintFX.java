@@ -41,6 +41,7 @@ public class PaintFX extends Application {
                         // а кнопку оставим в самой root и очищать будем только вложенную область
             circlesRoot.getChildren().clear();
             draw(circlesRoot);
+
         });
         root.getChildren().addAll(button);
     }

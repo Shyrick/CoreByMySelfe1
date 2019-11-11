@@ -28,6 +28,7 @@ public class L51pr1_Point {
     public double x;
     public double y;
 
+
     public L51pr1_Point(double x, double y) {
         this.x = x;
         this.y = y;

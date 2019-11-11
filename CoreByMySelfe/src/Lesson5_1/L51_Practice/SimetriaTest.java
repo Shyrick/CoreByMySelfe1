@@ -14,7 +14,8 @@ import java.util.Random;
 
 public class SimetriaTest extends Application {
 
-
+    public static final int NUMBER_OF_POINTS = 100000;
+    L51pr1_Point [] points = new L51pr1_Point[1000];
     public static void main(String[] args) {
         launch(args);
 
@@ -42,6 +43,14 @@ public class SimetriaTest extends Application {
         root.getChildren().addAll(c1);
         return newPoint;
     }
+    void doPainting (Pane root, L51pr1_Point p1, L51pr1_Point p2, L51pr1_Point p3, L51pr1_Point startpoint){
+        L51pr1_Point newPoint = startpoint;
+        for (int i = 0; i < NUMBER_OF_POINTS ; i++) {
+           newPoint =  showPointOnLine (root, choosePointDirection(p1, p2, p3), newPoint);
+
+        }
+
+    }
 
 
 
@@ -49,12 +58,7 @@ public class SimetriaTest extends Application {
 
         root.getChildren().addAll(circle);
     }
-    void drawAll (int number, Pane root, L51pr1_Point p1, L51pr1_Point p2){
-        for (int i = 0; i <= number ; i++) {
 
-
-        }
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -66,15 +70,19 @@ public class SimetriaTest extends Application {
         window.windowSetup(primaryStage);
         primaryStage.show();
 
-        Circle c1 = new Circle(400, 50, 2);
-        Circle c2 = new Circle(700, 600, 2);
-        Circle c3 = new Circle(50, 600, 2);
-        Circle startPoint = new Circle(200, 200, 2);
+        L51pr1_Point p1 = new L51pr1_Point(400, 50);
+        L51pr1_Point p2 = new L51pr1_Point(700, 600);
+        L51pr1_Point p3 = new L51pr1_Point(50, 600);
+        L51pr1_Point p4 = new L51pr1_Point(200, 200);
+        Circle c1 = new Circle(p1.getX(), p1.getY(),2);
+        Circle c2 = new Circle(p2.getX(), p2.getY(),2);
+        Circle c3 = new Circle(p3.getX(), p3.getY(),2);
+        Circle c4 = new Circle(p4.getX(), p4.getY(),2);
         drawPoint(c1, root);
         drawPoint(c2, root);
         drawPoint(c3, root);
-        drawPoint(startPoint, root);
-
+        drawPoint(c4, root);
+        doPainting(root, p1, p2, p3, p4 );
 
 
 
