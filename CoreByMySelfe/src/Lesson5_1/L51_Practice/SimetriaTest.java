@@ -23,17 +23,27 @@ public class SimetriaTest extends Application {
 
     int random (){
         Random random = new Random();
-        return random.nextInt(7);
+        int r = random.nextInt(7);
+        while (r == 0)
+            r = random.nextInt(7);
+        return r;
     }
+
+    L51pr1_Point choosePoint (L51pr1_Point p1, L51pr1_Point p2, L51pr1_Point p3){
+        if (random() == 1 || random() == 2)            return p1;
+        else  if (random() == 3 || random() == 4)            return p2;
+        else return p3;
+    }
+
+    
+
     void drawPoint (Circle circle, Pane root){
 
         root.getChildren().addAll(circle);
     }
-    void drawAll (int number, Pane root){
+    void drawAll (int number, Pane root, L51pr1_Point p1, L51pr1_Point p2){
         for (int i = 0; i <= number ; i++) {
-            if (random() == 0) continue;
-            if (random() == 1 || random() ==2){
-                движемся к точке 1
+
             }
         }
     }
