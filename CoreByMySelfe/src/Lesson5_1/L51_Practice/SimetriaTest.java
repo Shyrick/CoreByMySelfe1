@@ -39,7 +39,7 @@ public class SimetriaTest extends Application {
     public L51pr1_Point showPointOnLine (Pane root, L51pr1_Point p1, L51pr1_Point p2){
         L51pr_Line line = new L51pr_Line(p1, p2);
         L51pr1_Point newPoint =  line.getPointOnLine(0.5f);
-        Circle c1 = new Circle(newPoint.getX(), newPoint.getY(), 2);
+        Circle c1 = new Circle(newPoint.getX(), newPoint.getY(), 1);
         root.getChildren().addAll(c1);
         return newPoint;
     }
@@ -74,10 +74,10 @@ public class SimetriaTest extends Application {
         L51pr1_Point p2 = new L51pr1_Point(700, 600);
         L51pr1_Point p3 = new L51pr1_Point(50, 600);
         L51pr1_Point p4 = new L51pr1_Point(200, 200);
-        Circle c1 = new Circle(p1.getX(), p1.getY(),2);
-        Circle c2 = new Circle(p2.getX(), p2.getY(),2);
-        Circle c3 = new Circle(p3.getX(), p3.getY(),2);
-        Circle c4 = new Circle(p4.getX(), p4.getY(),2);
+        Circle c1 = new Circle(p1.getX(), p1.getY(),1);
+        Circle c2 = new Circle(p2.getX(), p2.getY(),1);
+        Circle c3 = new Circle(p3.getX(), p3.getY(),1);
+        Circle c4 = new Circle(p4.getX(), p4.getY(),1);
         drawPoint(c1, root);
         drawPoint(c2, root);
         drawPoint(c3, root);
