@@ -25,7 +25,7 @@ public class L51pr1_Point {
 
     private final static L51pr1_Point ZERO = new L51pr1_Point(0,0);
 
-    public double x;
+          public double x;
     public double y;
 
 
