@@ -7,12 +7,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Window {
-    private static final int WIDTH = 800;
+    private static final int WIDTH = 900;
     private static final int HEIGTH = 700;
-    private static final int MAX_WIDTH = 800;
+    private static final int MAX_WIDTH = 900;
     private static final int MAX_HEIGTH = 700;
-    private static final int MIN_WIDTH = 800;
-    private static final int MIN_HEIGTH = 700;
+    private static final int MIN_WIDTH = 400;
+    private static final int MIN_HEIGTH = 400;
 
     void windowSetup(Stage primaryStage) {
         primaryStage.setWidth(WIDTH);
@@ -24,31 +24,5 @@ public class Window {
         primaryStage.setTitle("Symetria");
     }
 
-    void uiSetup (Pane root, Pane frontRoot){
-        Text text = new Text("Количество точек");
-        text.setTranslateX(40);
-        text.setTranslateY(30);
-
-        TextField textField1 = new TextField();
-        textField1.setTranslateX(200);
-        textField1.setTranslateY(15);
-
-        Button button1 = new Button("Рисовать");
-        button1.setTranslateX(400);
-        button1.setTranslateY(15);
-        button1.setOnAction(event -> {
-            int number = Integer.valueOf(textField1.getText());
-            // вызов метода рисования
-        });
-
-        Button button2 = new Button("Очистить");
-        button2.setTranslateX(500);
-        button2.setTranslateY(15);
-        button2.setOnAction(event -> {
-            frontRoot.getChildren().clear();
-        });
-
-        root.getChildren().addAll(text, textField1, button1, button2);
-    }
 
 }

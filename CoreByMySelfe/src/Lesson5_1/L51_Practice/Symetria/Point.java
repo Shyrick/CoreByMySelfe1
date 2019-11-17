@@ -9,7 +9,7 @@ public class Point {
     public double y;
 
     public void showPoint (Pane root, Point point){
-         Circle c1 = new Circle(point.getX(), point.getY(), 1);
+         Circle c1 = new Circle(point.getX(), point.getY(), 2);
          root.getChildren().addAll(c1);
     }
 

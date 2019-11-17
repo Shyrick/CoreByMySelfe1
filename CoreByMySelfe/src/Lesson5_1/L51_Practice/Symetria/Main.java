@@ -24,7 +24,18 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         window.windowSetup(primaryStage);
         primaryStage.show();
-        window.uiSetup(root, frontRoot);
+
+
+        Point p1 = new Point(450, 70);
+        Point p2 = new Point(50, 620);
+        Point p3= new Point(750, 620);
+        Point startPoint = new Point(500, 300);
+        Map map = new Map(p1, p2, p3, startPoint);
+        Controller controller = new Controller(map);
+
+        controller.uiSetup(root, frontRoot);
+        controller.map.showStartPoint(root);
+//        controller.doPainting(frontRoot, p1, p2, p3, startPoint);
 
     }
 }
