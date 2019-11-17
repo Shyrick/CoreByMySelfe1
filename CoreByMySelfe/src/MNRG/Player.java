@@ -5,6 +5,9 @@ public class Player {
     String name;
     int position;
     int money;
+    boolean isActiv;
+    int circleCount= 0;
+    int totalScore = 0;
 
 
 
@@ -12,6 +15,8 @@ public class Player {
         this.name = name;
         this.position = 0;
         this.money = 1000;
+        this.isActiv = false;
+
     }
 
     public String getName() {

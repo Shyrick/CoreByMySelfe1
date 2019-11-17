@@ -24,7 +24,7 @@ public class Window {
         primaryStage.setTitle("Symetria");
     }
 
-    void uiSetup (Pane root){
+    void uiSetup (Pane root, Pane frontRoot){
         Text text = new Text("Количество точек");
         text.setTranslateX(40);
         text.setTranslateY(30);
@@ -36,10 +36,17 @@ public class Window {
         Button button1 = new Button("Рисовать");
         button1.setTranslateX(400);
         button1.setTranslateY(15);
+        button1.setOnAction(event -> {
+            int number = Integer.valueOf(textField1.getText());
+            // вызов метода рисования
+        });
 
         Button button2 = new Button("Очистить");
         button2.setTranslateX(500);
         button2.setTranslateY(15);
+        button2.setOnAction(event -> {
+            frontRoot.getChildren().clear();
+        });
 
         root.getChildren().addAll(text, textField1, button1, button2);
     }

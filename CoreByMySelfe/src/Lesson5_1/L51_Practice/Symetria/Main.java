@@ -24,7 +24,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         window.windowSetup(primaryStage);
         primaryStage.show();
-        window.uiSetup(root);
+        window.uiSetup(root, frontRoot);
 
     }
 }
