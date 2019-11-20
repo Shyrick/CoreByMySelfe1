@@ -23,8 +23,8 @@ public class Map {
     }
     public Point getPointOnLine(Point p1, Point p2){
 
-        double newX = p1.getX() + (p2.getX() - p1.getX())*0.5;
-        double newY = p1.getY() + (p2.getY() - p1.getY())*0.5;
+        double newX = p1.getX() + (p2.getX() - p1.getX())*0.6;
+        double newY = p1.getY() + (p2.getY() - p1.getY())*0.6;
         return new Point(newX, newY);
     }
 

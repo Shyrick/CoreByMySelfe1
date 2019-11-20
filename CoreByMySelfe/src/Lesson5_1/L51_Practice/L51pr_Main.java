@@ -48,10 +48,10 @@ public class L51pr_Main extends Application {
 //        Line line2 = new Line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
 //        window.addLineToRoot(root, line1.lineFx);
 
-        System.out.println(p1.calculateLength());
+//        System.out.println(p1.calculateLength());
         L51pr1_Point p4 = p1.normolize();
-        System.out.println(p4.calculateLength());
-        System.out.println(p1.normolize().calculateLength());
+//        System.out.println(p4.calculateLength());
+//        System.out.println(p1.normolize().calculateLength());
 
 //        L51pr1_Point p4 = line1.getPointOnLine(1f);
 //        Circle c1 = new Circle(p4.getX(), p4.getY(), 5);
