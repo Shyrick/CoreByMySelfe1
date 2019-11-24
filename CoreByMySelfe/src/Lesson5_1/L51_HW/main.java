@@ -23,7 +23,7 @@ public class main extends Application {
         window.windowSetup(primaryStage);
         primaryStage.show();
 
-        SnowManPainter snowManPainter = new SnowManPainter();
+        SnowManPainter snowManPainter = new SnowManPainter(primaryStage);
         snowManPainter.textAndButton(root, frontRoot, primaryStage);
 
 

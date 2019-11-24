@@ -16,12 +16,10 @@ public class SnowManPainter {
     int numberOfCirles;
     double minRadius;
     double maxRadius;
-
-
-    double x = 400; //primaryStage.getWidth() / 2;
+    Stage primaryStage;
 //    double[] yOfCircles;
 //    double[] radiusOfCircles;
-
+    Circle [] circles;
 
     double random (){
         Random random = new Random();
@@ -37,49 +35,57 @@ public class SnowManPainter {
         circle.setStroke(Paint.valueOf("#000000"));
     }
 
-    void drawBody(Pane frontRoot, Stage primaryStage, int numberOfCirles) {
-        double[] yOfCircles = new double[numberOfCirles];
-        double[] radiusOfCircles = new double[numberOfCirles];
+    
+
+    void drawBody(Pane frontRoot,  int numberOfCirles) {
+
+        double  x = primaryStage.getWidth() / 2;
+        circles = new Circle[numberOfCirles];
 
         double yOfBottomLine = primaryStage.getHeight() - 50;
         Line line = new Line(50, yOfBottomLine, 600, yOfBottomLine);
         frontRoot.getChildren().addAll(line);
 
-        radiusOfCircles[0] = random();
-        yOfCircles[0] = yOfBottomLine - radiusOfCircles[0];
+        double r1 = random();
+        double y1 = yOfBottomLine - r1;
+        circles [0]= new Circle(x, y1,r1);
 
         for (int i = 0; i < numberOfCirles; i++) {
-            Circle circle = new Circle(x, yOfCircles[i], radiusOfCircles[i]);
-            circleSetup(circle);
+            circleSetup(circles[i]);
             if (i < numberOfCirles - 1) {
-                radiusOfCircles[i + 1] = random();
-                yOfCircles[i + 1] = yOfCircles[i] - radiusOfCircles[i] - radiusOfCircles[i + 1];
+                double nextRadius = random();
+               double nextY = circles[i].getCenterY() - circles[i].getRadius() - nextRadius;
+               circles [i+1] = new Circle(x, nextY, nextRadius);
             }
-            frontRoot.getChildren().addAll(circle);
+            frontRoot.getChildren().addAll(circles[i]);
         }
-//        drawFace(frontRoot, primaryStage, numberOfCirles);
+        drawFace(frontRoot, numberOfCirles);
     }
 
-//        void  drawFace (Pane frontRoot, Stage primaryStage, int numberOfCirles){
-//            maxRadius = radiusOfCircles[numberOfCirles-1] / 3;
-//            double y1 = yOfCircles [numberOfCirles-1] + radiusOfCircles[numberOfCirles-1]/3;
-//            double x2 = x - radiusOfCircles[numberOfCirles - 1] / 3;
-//            double y2 = yOfCircles [numberOfCirles-1] - radiusOfCircles[numberOfCirles-1]/3;
-//            double x3 = x + radiusOfCircles[numberOfCirles - 1] / 3;
-//            double y3 = yOfCircles [numberOfCirles-1] - radiusOfCircles[numberOfCirles-1]/3;
-//
-//
-//            Circle circle1 = new Circle(x, y1, random() );
-//            Circle circle2 = new Circle(x2, y2, random() );
-//            Circle circle3 = new Circle(x3, y3, random() );
-//
-//            frontRoot.getChildren().addAll(circle1, circle2, circle3);
-//
-//
-//
-//
-//
-//        }
+        void  drawFace (Pane frontRoot, int numberOfCirles){
+            double  x = primaryStage.getWidth() / 2;
+            maxRadius = circles [numberOfCirles - 1].getRadius() / 3;
+            minRadius = circles [numberOfCirles - 1].getRadius() / 6;
+            double y1 = circles [numberOfCirles - 1].getCenterY() + circles [numberOfCirles - 1].getRadius() / 3;
+            double x2 = x - circles [numberOfCirles - 1].getRadius() / 3;
+            double y2 = circles [numberOfCirles - 1].getCenterY() - circles [numberOfCirles - 1].getRadius() / 3;
+            double x3 = x + circles [numberOfCirles - 1].getRadius() / 3;
+            double y3 = y2;
+
+            Circle circle1 = new Circle(x, y1, random() );
+            Circle circle2 = new Circle(x2, y2, random() );
+            Circle circle3 = new Circle(x3, y3, random() );
+            circleSetup(circle1);
+            circleSetup(circle2);
+            circleSetup(circle3);
+
+            frontRoot.getChildren().addAll(circle1, circle2, circle3);
+
+
+
+
+
+        }
 
     public void textAndButton (Pane root, Pane frontRoot, Stage primaryStage ){
         Text text1 = new Text("Количество кругов");
@@ -116,12 +122,12 @@ public class SnowManPainter {
            minRadius = Double.valueOf(textField2.getText());
            maxRadius = Double.valueOf(textField3.getText());
 
-           if(maxRadius > ((primaryStage.getHeight() - 85)/(2*numberOfCirles))){
+           if(maxRadius > ((primaryStage.getHeight())/(1.8*numberOfCirles))){
                frontRoot.getChildren().clear();
                frontRoot.getChildren().addAll(text4);
            }else {
             frontRoot.getChildren().clear();
-            drawBody(frontRoot, primaryStage, numberOfCirles);
+            drawBody(frontRoot, numberOfCirles);
            }
         });
 
@@ -138,7 +144,7 @@ public class SnowManPainter {
 
     }
 
-//    public SnowManPainter(Stage primaryStage) {
-//        this.primaryStage = primaryStage;
-//    }
+    public SnowManPainter(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 }
