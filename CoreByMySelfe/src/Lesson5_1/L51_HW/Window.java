@@ -12,11 +12,11 @@ import javafx.stage.Stage;
 public class Window {
 
     private static final int WIDTH = 800;
-    private static final int HEIGTH = 600;
+    private static final int HEIGTH = 700;
     private static final int MAX_WIDTH = 800;
-    private static final int MAX_HEIGTH = 600;
+    private static final int MAX_HEIGTH = 700;
     private static final int MIN_WIDTH = 800;
-    private static final int MIN_HEIGTH = 600;
+    private static final int MIN_HEIGTH = 700;
 
     void windowSetup(Stage primaryStage) {
         primaryStage.setWidth(WIDTH);
@@ -25,7 +25,7 @@ public class Window {
         primaryStage.setMaxHeight(MAX_HEIGTH);
         primaryStage.setMinWidth(MIN_WIDTH);
         primaryStage.setMinHeight(MIN_HEIGTH);
-        primaryStage.setTitle("SnowMan");
+        primaryStage.setTitle("SnowManPainter");
         primaryStage.titleProperty();
     }
 
