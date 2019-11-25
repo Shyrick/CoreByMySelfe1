@@ -35,7 +35,7 @@ public class SnowManPainter {
         circle.setStroke(Paint.valueOf("#000000"));
     }
 
-    
+
 
     void drawBody(Pane frontRoot,  int numberOfCirles) {
 
