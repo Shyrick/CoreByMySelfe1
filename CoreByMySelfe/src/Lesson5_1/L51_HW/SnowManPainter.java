@@ -87,62 +87,7 @@ public class SnowManPainter {
 
         }
 
-    public void textAndButton (Pane root, Pane frontRoot, Stage primaryStage ){
-        Text text1 = new Text("Количество кругов");
-        text1.setTranslateX(40);
-        text1.setTranslateY(20);
-        TextField textField1 = new TextField();
-        textField1.setTranslateX(40);
-        textField1.setTranslateY(30);
 
-        Text text2 = new Text("Минимальный радиус");
-        text2.setTranslateX(200);
-        text2.setTranslateY(20);
-        TextField textField2 = new TextField();
-        textField2.setTranslateX(200);
-        textField2.setTranslateY(30);
-
-        Text text3 = new Text("Максимальный радиус");
-        text3.setTranslateX(370);
-        text3.setTranslateY(20);
-        TextField textField3 = new TextField();
-        textField3.setTranslateX(360);
-        textField3.setTranslateY(30);
-
-        Text text4 = new Text("Максимальный радиус слишком большой");
-        text4.setTranslateX(370);
-        text4.setTranslateY(70);
-
-        Button button1 = new Button("Рисовать");
-        button1.setTranslateX(570);
-        button1.setTranslateY(30);
-        button1.setOnAction(event -> {
-
-           numberOfCirles = Integer.valueOf(textField1.getText());
-           minRadius = Double.valueOf(textField2.getText());
-           maxRadius = Double.valueOf(textField3.getText());
-
-           if(maxRadius > ((primaryStage.getHeight())/(1.8*numberOfCirles))){
-               frontRoot.getChildren().clear();
-               frontRoot.getChildren().addAll(text4);
-           }else {
-            frontRoot.getChildren().clear();
-            drawBody(frontRoot, numberOfCirles);
-           }
-        });
-
-        Button button2 = new Button("Очистить");
-        button2.setTranslateX(660);
-        button2.setTranslateY(30);
-        button2.setOnAction(event -> {
-            frontRoot.getChildren().clear();
-        });
-
-
-
-        root.getChildren().addAll(text1, text2, text3, textField1, textField2, textField3, button1, button2);
-
-    }
 
     public SnowManPainter(Stage primaryStage) {
         this.primaryStage = primaryStage;

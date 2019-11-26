@@ -2,6 +2,8 @@ package Lesson5_2.entities;
 
 public class A {
     public String text = "---";
+    private String text2;
+    protected String text3;
     public int value = 1000;
 
     public A (){

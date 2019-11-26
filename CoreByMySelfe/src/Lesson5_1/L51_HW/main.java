@@ -13,7 +13,7 @@ public class main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Window window = new Window();
+        Window window = new Window(primaryStage);
         Pane root = new Pane();
         Pane frontRoot = new Pane();
         root.getChildren().addAll(frontRoot);
@@ -24,8 +24,8 @@ public class main extends Application {
         primaryStage.show();
 
         SnowManPainter snowManPainter = new SnowManPainter(primaryStage);
-        snowManPainter.textAndButton(root, frontRoot, primaryStage);
-
+        window.textAndTextFields(root);
+        window.buttons(root, frontRoot);
 
 
     }
