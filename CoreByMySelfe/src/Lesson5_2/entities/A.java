@@ -14,4 +14,9 @@ public class A {
         this.text = text;
         this.value = value;
     }
+
+    public void show (){
+        System.out.println("text: " + text);
+        System.out.println("value: " + value);
+    }
 }
