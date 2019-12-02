@@ -24,4 +24,3 @@ public class B extends A {
         System.out.println("name: " + name);
     }
 }
-45:00
