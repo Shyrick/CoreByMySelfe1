@@ -13,5 +13,16 @@ public class Main {
         cat.sound();
         dog.sound();
 
+
+        // !!!! МОЖНО создать объект абстарактного класса
+
+//        Animal animal = new Animal() {
+//            @Override
+//            public void sound() {
+//
+//            }
+//        };
+//        animal.name = "jjj";
+
     }
 }

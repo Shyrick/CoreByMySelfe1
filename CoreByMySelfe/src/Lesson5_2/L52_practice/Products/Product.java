@@ -1,6 +1,7 @@
 package Lesson5_2.L52_practice.Products;
 
 public abstract class Product {
+
     public int id;
     public String name;
     public int amount;
@@ -8,8 +9,8 @@ public abstract class Product {
     public double price;
 
 
-    public Product(int id, String name, int amount, String description, double price) {
-        this.id = id;
+    public Product( int id, String name, int amount, String description, double price) {
+
         this.name = name;
         this.amount = amount;
         this.description = description;
