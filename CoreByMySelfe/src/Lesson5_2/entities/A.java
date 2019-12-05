@@ -16,7 +16,8 @@ public class A {
     }
 
     public void show (){
-        System.out.println("text: " + text);
-        System.out.println("value: " + value);
+
+        System.out.println("Class A text:  " + text);
+        System.out.println("        value: " + value);
     }
 }

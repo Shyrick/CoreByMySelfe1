@@ -11,15 +11,23 @@ public class Store {
     Smartfone[] smartfones;
     Vegetable[] vegetables;
     Water[] waters;
-    String [] products = {"Smartfone", "Vegetables", "Water" };
+    String [] products;
 
     public Store(double money, Smartfone[] smartfones, Vegetable[] vegetables, Water[] waters) {
         this.money = money;
         this.smartfones = smartfones;
         this.vegetables = vegetables;
         this.waters = waters;
+        this.products = new String[]{"Smartfone", "Vegetables", "Water" };
     }
 
+    public void addSmartfoneToArray (Smartfone newSmartfone){
+        Smartfone [] array = new Smartfone[smartfones.length + 1];
+        for (int i = 0; i < smartfones.length ; i++) {
+            array [i] = smartfones [i];
+        }
+        array[array.length-1] = newSmartfone;
+    }
 
     public void addVegetableToArray (Vegetable newVegetable){
         Vegetable [] array = new Vegetable[vegetables.length + 1];
@@ -37,13 +45,7 @@ public class Store {
         array[array.length-1] = newWater;
     }
 
-    public void addSmartfoneToArray (Smartfone newSmartfone){
-        Smartfone [] array = new Smartfone[smartfones.length + 1];
-        for (int i = 0; i < smartfones.length ; i++) {
-            array [i] = smartfones [i];
-        }
-        array[array.length-1] = newSmartfone;
-    }
+
 
 
     public Product [] findCategoryArray(String category){

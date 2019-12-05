@@ -9,54 +9,83 @@ import javafx.scene.text.Text;
 public class WindowForms extends WindowStore {
 
     Text text1, text2, text3, text4, text5, text6;
-    TextField tfName, tfAmount, tfDescription, tfPrice, shelfLife;
+    TextField tfName, tfAmount, tfDescription, tfPrice, tfShelfLife;
     Button buttonSave;
 
     public WindowForms() {
     }
 
+
+
     public void windowFormsSetup (Pane frontRoot){
 
         frontRoot.getChildren().clear();
 
-        this.text2 = new Text("Наименование");
+        text2 = new Text("Наименование");
         text2.setTranslateX(50);
         text2.setTranslateY(100);
         this.tfName = new TextField();
         tfName.setTranslateX(50);
         tfName.setTranslateY(120);
 
-        this.text3 = new Text("Количество");
+        text3 = new Text("Количество");
         text3.setTranslateX(250);
         text3.setTranslateY(100);
         this.tfAmount = new TextField();
         tfAmount.setTranslateX(250);
         tfAmount.setTranslateY(120);
 
-        this.text4 = new Text("Описание");
+        text4 = new Text("Описание");
         text4.setTranslateX(50);
         text4.setTranslateY(200);
         this.tfDescription = new TextField();
         tfDescription.setTranslateX(50);
         tfDescription.setTranslateY(220);
 
-        this.text5 = new Text("Цена");
+        text5 = new Text("Цена");
         text5.setTranslateX(250);
         text5.setTranslateY(200);
         this.tfPrice = new TextField();
         tfPrice.setTranslateX(250);
         tfPrice.setTranslateY(220);
 
+        text6 = new Text("Срок годности");
+        text6.setTranslateX(50);
+        text6.setTranslateY(300);
+        this.tfShelfLife = new TextField();
+        tfShelfLife.setTranslateX(50);
+        tfShelfLife.setTranslateY(320);
+
         this.buttonSave = new Button("Сохранить");
         buttonSave.setTranslateX(50);
-        buttonSave.setTranslateY(300);
+        buttonSave.setTranslateY(350);
 
+    }
+
+    // Метод выводит 2 кнопки Добавить товар и Выбрать товар
+
+    public void twoButtons (Pane frontRoot){
+        Button button1 = new Button("Добавить товар");
+        button1.setTranslateX(50);
+        button1.setTranslateY(100);
+        button1.setOnAction(event1 ->  {
+            newProductChoiceBox (frontRoot);
+        });
+
+        Button button2 = new Button("Выбрать товар");
+        button2.setTranslateX(200);
+        button2.setTranslateY(100);
+        button2.setOnAction(event1 ->  {
+            productChoiceBox (frontRoot);
+        });
+
+        frontRoot.getChildren().addAll(button1, button2);
     }
 
 
     public void createSmartfoneForm(Pane frontRoot) {
 
-        this.text1 = new Text("Новый товар в категорию Смартфон");
+        text1 = new Text("Новый товар в категорию Смартфон");
         text1.setTranslateX(30);
         text1.setTranslateY(30);
 
@@ -72,16 +101,20 @@ public class WindowForms extends WindowStore {
         text1.setTranslateX(30);
         text1.setTranslateY(30);
 
+        frontRoot.getChildren().addAll(text1, text2, text3, text4, text5, text6,
+                tfAmount, tfDescription, tfName, tfPrice, tfShelfLife, buttonSave);
+
+    }
+
+    public void createWaterForm(Pane frontRoot) {
+
+        text1 = new Text("Новый товар в категорию Вода");
+        text1.setTranslateX(30);
+        text1.setTranslateY(30);
+
         frontRoot.getChildren().addAll(text1, text2, text3, text4, text5,
                 tfAmount, tfDescription, tfName, tfPrice, buttonSave);
 
-        String name =  tfName.getText();
-        int amount = Integer.valueOf(tfAmount.getText());
-        String description = tfDescription.getText();
-        double price = Double.valueOf(tfPrice.getText());
-
-        Smartfone smartfone = new Smartfone(idCeeper.generateVegetableId(), name, amount, description,price);
-        store.smartfones[store.smartfones.length] = smartfone;
 
     }
 }

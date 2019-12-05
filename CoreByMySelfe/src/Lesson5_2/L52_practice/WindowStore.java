@@ -2,6 +2,8 @@ package Lesson5_2.L52_practice;
 
 import Lesson5_2.L52_practice.Products.IdCeeper;
 import Lesson5_2.L52_practice.Products.Smartfone;
+import Lesson5_2.L52_practice.Products.Vegetable;
+import Lesson5_2.L52_practice.Products.Water;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -83,6 +85,9 @@ public class WindowStore {
     public void productChoiceBox(Pane frontRoot) {
 
         frontRoot.getChildren().clear();
+        Text text1 = new Text("Выберите категорию");
+        text1.setTranslateX(30);
+        text1.setTranslateY(30);
 
         String [] arr = store.products;
         ObservableList<String> products = FXCollections.observableArrayList(arr);
@@ -92,10 +97,15 @@ public class WindowStore {
         productChoiceBox.setTranslateX(70);
         productChoiceBox.setTranslateY(90);
 
-        frontRoot.getChildren().addAll(productChoiceBox);
+        frontRoot.getChildren().addAll(productChoiceBox, text1);
 
         productChoiceBox.setOnAction(event -> {
-
+//            String str = productChoiceBox.getValue();
+//            if (str == store.products[0]){
+//                createSmartfone(frontRoot);
+//            } else if (str == store.products[1]){
+//                createVegetable(frontRoot);
+//            } else createWater(frontRoot);
 
 
         });
@@ -104,15 +114,20 @@ public class WindowStore {
     public void newProductChoiceBox (Pane frontRoot) {
 
         frontRoot.getChildren().clear();
-        String [] arr = store.products;
-        ObservableList<String> products = FXCollections.observableArrayList(arr);
+        Text text1 = new Text("Выберите категорию");
+        text1.setTranslateX(30);
+        text1.setTranslateY(30);
+
+//        String [] arr = store.products;
+        String [] arr = new String[]{"Smartfone", "Vegetables", "Water"};
+                ObservableList<String> products = FXCollections.observableArrayList(arr);
         ChoiceBox<String> productChoiceBox = new ChoiceBox<String>(products);
 //        productChoiceBox.setValue(store.products [0]); // значение по умолчанию
-        productChoiceBox.setTooltip(new Tooltip("Select the category")); // выпадающее окно при наведении
+        productChoiceBox.setTooltip(new Tooltip("Select new the category")); // выпадающее окно при наведении
         productChoiceBox.setTranslateX(70);
         productChoiceBox.setTranslateY(150);
 
-        frontRoot.getChildren().addAll(productChoiceBox);
+        frontRoot.getChildren().addAll(productChoiceBox, text1);
 
         productChoiceBox.setOnAction(event -> {
             String str = productChoiceBox.getValue();
@@ -130,9 +145,9 @@ public class WindowStore {
        windowForms. windowFormsSetup (frontRoot);
        windowForms.createSmartfoneForm(frontRoot);
 
-       // Считываем даннык из формы и создаем объкт Смарфон
-
-       windowForms.buttonSave.setOnAction(event -> {
+       // По нажатию кнопки Сохранить
+       // считываем даннык из формы и создаем объкт Смарфон
+           windowForms.buttonSave.setOnAction(event -> {
            String name =  windowForms.tfName.getText();
            int amount = Integer.valueOf(windowForms.tfAmount.getText());
            String description = windowForms.tfDescription.getText();
@@ -146,37 +161,65 @@ public class WindowStore {
            text1.setTranslateY(30);
            frontRoot.getChildren().addAll(text1);
 
-           Button button1 = new Button("Добавить товар");
-           button1.setTranslateX(50);
-           button1.setTranslateY(100);
-           button1.setOnAction(event1 ->  {
-               newProductChoiceBox (frontRoot);
-           });
+           windowForms.twoButtons (frontRoot); // Вызываем кнопки Добавить товар и Выбрать товар
 
-           Button button2 = new Button("Выбрать товар");
-           button2.setTranslateX(200);
-           button2.setTranslateY(100);
-           button2.setOnAction(event1 ->  {
-               productChoiceBox (frontRoot);
-           });
-
-           frontRoot.getChildren().addAll(button1, button2);
        });
 
-
-
-       // helloyMenu (frontRoot); // Вызываем меню-приветствие
    }
 
     public void createVegetable(Pane frontRoot){
+        // ввод данных в техтфилды для создания объекта Овощи
+        windowForms. windowFormsSetup (frontRoot);
+        windowForms.createVegetableForm(frontRoot);
+
+        // Считываем даннык из формы и создаем объкт Овощ
+
+        windowForms.buttonSave.setOnAction(event -> {
+            String name =  windowForms.tfName.getText();
+            int amount = Integer.valueOf(windowForms.tfAmount.getText());
+            String description = windowForms.tfDescription.getText();
+            double price = Double.valueOf(windowForms.tfPrice.getText());
+            int shelfLife = Integer.valueOf(windowForms.tfShelfLife.getText());
+
+            Vegetable vegetable = new Vegetable(idCeeper.generateSmarfoneId(), name, amount, description,price, shelfLife);
+            store.addVegetableToArray(vegetable);
+            // Оповещение об удачном добавлении товара
+            frontRoot.getChildren().clear();
+            Text text1 = new Text(vegetable.toString() + " \n   успешно добавлен");
+            text1.setTranslateX(30);
+            text1.setTranslateY(30);
+            frontRoot.getChildren().addAll(text1);
+
+            windowForms.twoButtons (frontRoot);// Вызываем кнопки Добавить товар и Выбрать товар
+
+        });
 
     }
 
-
-
     public void createWater(Pane frontRoot){
         // ввод данных в техтфилды для создания объекта вода
+        windowForms. windowFormsSetup (frontRoot);
+        windowForms.createVegetableForm(frontRoot);
 
+        // Считываем даннык из формы и создаем объкт Вода
+
+        windowForms.buttonSave.setOnAction(event -> {
+        String name =  windowForms.tfName.getText();
+        int amount = Integer.valueOf(windowForms.tfAmount.getText());
+        String description = windowForms.tfDescription.getText();
+        double price = Double.valueOf(windowForms.tfPrice.getText());
+
+        Water water = new Water(idCeeper.generateSmarfoneId(), name, amount, description,price);
+        store.addWaterToArray(water);
+        frontRoot.getChildren().clear();
+        Text text1 = new Text(water.toString() + " \n   успешно добавлен");
+        text1.setTranslateX(30);
+        text1.setTranslateY(30);
+        frontRoot.getChildren().addAll(text1);
+
+        windowForms.twoButtons (frontRoot);// Вызываем кнопки Добавить товар и Выбрать товар
+
+    });
     }
 
 }

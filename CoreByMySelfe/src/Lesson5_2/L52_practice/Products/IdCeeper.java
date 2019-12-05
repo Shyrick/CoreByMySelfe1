@@ -39,6 +39,9 @@ public class IdCeeper {
         return newId;
     }
 
-
-
+    public IdCeeper() {
+        this.smartfoneIdArray = new int[]{0};
+        this.vegetableIdArray = new int[]{0};
+        this.waterIdArray = new int[]{0};
+    }
 }
