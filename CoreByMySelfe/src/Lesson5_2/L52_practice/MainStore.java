@@ -23,8 +23,7 @@ public class MainStore extends Application {
         Water water = new Water(idCeeper.generateWaterId(),"Borgomi", 40, "Made in Georgia", 2);
 
         Store store = new Store(1000,new Smartfone[]{smartfone1}, new Vegetable[] {vegetable1}, new Water[]{water});
-        WindowForms windowForms = new WindowForms(store);
-        WindowStore window = new WindowStore(store, windowForms, idCeeper);
+        WindowStore windowStore = new WindowStore(idCeeper, store);
 
         Pane root = new Pane();
         Pane frontRoot = new Pane();
@@ -32,10 +31,10 @@ public class MainStore extends Application {
 
         Scene scene = new Scene(root, WIDTH, HEIGTH);
         primaryStage.setScene(scene);
-        window.windowSetup(primaryStage);
+        windowStore.windowSetup(primaryStage);
         primaryStage.show();
 
-        window.helloyMenu(frontRoot);
+        windowStore.helloyMenu(frontRoot);
 
     }
 }

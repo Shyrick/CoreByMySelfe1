@@ -22,30 +22,30 @@ public class Store {
     }
 
     public void addSmartfoneToArray (Smartfone newSmartfone){
-        Smartfone [] array = new Smartfone[smartfones.length + 1];
+        Smartfone [] newArray = new Smartfone[smartfones.length + 1];
         for (int i = 0; i < smartfones.length ; i++) {
-            array [i] = smartfones [i];
+            newArray [i] = smartfones [i];
         }
-        array[array.length-1] = newSmartfone;
-        smartfones = array;
+        newArray[newArray.length-1] = newSmartfone;
+        smartfones = newArray;
     }
 
     public void addVegetableToArray (Vegetable newVegetable){
-        Vegetable [] array = new Vegetable[vegetables.length + 1];
+        Vegetable [] newArray = new Vegetable[vegetables.length + 1];
         for (int i = 0; i < vegetables.length ; i++) {
-            array [i] = vegetables [i];
+            newArray [i] = vegetables [i];
         }
-        array[array.length-1] = newVegetable;
-        vegetables = array;
+        newArray[newArray.length-1] = newVegetable;
+        vegetables = newArray;
     }
 
     public void addWaterToArray (Water newWater){
-        Water [] array = new Water[waters.length + 1];
+        Water [] newArray = new Water[waters.length + 1];
         for (int i = 0; i < waters.length ; i++) {
-            array [i] = waters [i];
+            newArray [i] = waters [i];
         }
-        array[array.length-1] = newWater;
-        waters = array;
+        newArray[newArray.length-1] = newWater;
+        waters = newArray;
     }
 
 
