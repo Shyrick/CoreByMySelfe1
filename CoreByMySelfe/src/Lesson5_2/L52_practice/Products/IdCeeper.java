@@ -6,7 +6,13 @@ public class IdCeeper {
     public int [] vegetableIdArray = {0};
     public int [] waterIdArray = {0};
 
-    public int generateSmarfoneId (){
+    public IdCeeper() {
+        this.smartfoneIdArray = new int[]{0};
+        this.vegetableIdArray = new int[]{0};
+        this.waterIdArray = new int[]{0};
+    }
+
+    public int generateSmartfoneId(){
         int [] array = new int [smartfoneIdArray.length + 1]; // увеличиваем длину массва на 1
         int newId = smartfoneIdArray[smartfoneIdArray.length -1 ] + 1; // увеличиваем на 1 последнее значение в массиве
         for (int i = 0; i < smartfoneIdArray.length ; i++) {
@@ -39,9 +45,5 @@ public class IdCeeper {
         return newId;
     }
 
-    public IdCeeper() {
-        this.smartfoneIdArray = new int[]{0};
-        this.vegetableIdArray = new int[]{0};
-        this.waterIdArray = new int[]{0};
-    }
+
 }

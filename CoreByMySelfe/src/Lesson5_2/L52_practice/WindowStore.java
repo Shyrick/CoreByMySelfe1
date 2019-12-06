@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -28,7 +27,8 @@ public class WindowStore {
     IdCeeper idCeeper;
 
 
-    public WindowStore() {
+    public WindowStore(Store store) {
+        this.store = store;
     }
 
     public WindowStore(Store store, WindowForms windowForms, IdCeeper idCeeper) {
@@ -118,8 +118,8 @@ public class WindowStore {
         text1.setTranslateX(30);
         text1.setTranslateY(30);
 
-//        String [] arr = store.products;
-        String [] arr = new String[]{"Smartfone", "Vegetables", "Water"};
+        String [] arr = store.products;
+//        String [] arr = new String[]{"Smartfone", "Vegetables", "Water"};
                 ObservableList<String> products = FXCollections.observableArrayList(arr);
         ChoiceBox<String> productChoiceBox = new ChoiceBox<String>(products);
 //        productChoiceBox.setValue(store.products [0]); // значение по умолчанию
@@ -141,7 +141,7 @@ public class WindowStore {
     }
 
    public void createSmartfone(Pane frontRoot){
-       // ввод данных в техтфилды для создания объекта смартфон
+       // ввод данных в текстфилды для создания объекта смартфон
        windowForms. windowFormsSetup (frontRoot);
        windowForms.createSmartfoneForm(frontRoot);
 
@@ -153,7 +153,7 @@ public class WindowStore {
            String description = windowForms.tfDescription.getText();
            double price = Double.valueOf(windowForms.tfPrice.getText());
 
-           Smartfone smartfone = new Smartfone(idCeeper.generateSmarfoneId(), name, amount, description,price);
+           Smartfone smartfone = new Smartfone(idCeeper.generateSmartfoneId(), name, amount, description,price);
            store.addSmartfoneToArray(smartfone);
            frontRoot.getChildren().clear();
            Text text1 = new Text(smartfone.toString() + " \n   успешно добавлен");
@@ -181,7 +181,7 @@ public class WindowStore {
             double price = Double.valueOf(windowForms.tfPrice.getText());
             int shelfLife = Integer.valueOf(windowForms.tfShelfLife.getText());
 
-            Vegetable vegetable = new Vegetable(idCeeper.generateSmarfoneId(), name, amount, description,price, shelfLife);
+            Vegetable vegetable = new Vegetable(idCeeper.generateSmartfoneId(), name, amount, description,price, shelfLife);
             store.addVegetableToArray(vegetable);
             // Оповещение об удачном добавлении товара
             frontRoot.getChildren().clear();
@@ -209,7 +209,7 @@ public class WindowStore {
         String description = windowForms.tfDescription.getText();
         double price = Double.valueOf(windowForms.tfPrice.getText());
 
-        Water water = new Water(idCeeper.generateSmarfoneId(), name, amount, description,price);
+        Water water = new Water(idCeeper.generateSmartfoneId(), name, amount, description,price);
         store.addWaterToArray(water);
         frontRoot.getChildren().clear();
         Text text1 = new Text(water.toString() + " \n   успешно добавлен");

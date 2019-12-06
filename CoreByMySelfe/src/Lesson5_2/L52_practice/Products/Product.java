@@ -11,6 +11,7 @@ public abstract class Product {
 
     public Product( int id, String name, int amount, String description, double price) {
 
+        this.id = id;
         this.name = name;
         this.amount = amount;
         this.description = description;

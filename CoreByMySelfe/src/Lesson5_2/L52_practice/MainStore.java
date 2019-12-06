@@ -1,6 +1,5 @@
 package Lesson5_2.L52_practice;
 
-import Lesson5_1.L51_HW.Window;
 import Lesson5_2.L52_practice.Products.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -19,11 +18,12 @@ public class MainStore extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         IdCeeper idCeeper = new IdCeeper();
-        WindowForms windowForms = new WindowForms();
-        Smartfone smartfone1 = new Smartfone(idCeeper.generateSmarfoneId(),"Nokia", 3, "Very good", 120);
+        Smartfone smartfone1 = new Smartfone(idCeeper.generateSmartfoneId(),"Nokia", 3, "Very good", 120);
         Vegetable vegetable1 = new Vegetable(idCeeper.generateVegetableId(), "Carrot",10,"Long and red", 4.5, 60);
         Water water = new Water(idCeeper.generateWaterId(),"Borgomi", 40, "Made in Georgia", 2);
+
         Store store = new Store(1000,new Smartfone[]{smartfone1}, new Vegetable[] {vegetable1}, new Water[]{water});
+        WindowForms windowForms = new WindowForms(store);
         WindowStore window = new WindowStore(store, windowForms, idCeeper);
 
         Pane root = new Pane();

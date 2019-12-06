@@ -11,8 +11,10 @@ public class WindowForms extends WindowStore {
     Text text1, text2, text3, text4, text5, text6;
     TextField tfName, tfAmount, tfDescription, tfPrice, tfShelfLife;
     Button buttonSave;
+//    Store store;
 
-    public WindowForms() {
+    public WindowForms(Store store) {
+       super(store);
     }
 
 

@@ -27,6 +27,7 @@ public class Store {
             array [i] = smartfones [i];
         }
         array[array.length-1] = newSmartfone;
+        smartfones = array;
     }
 
     public void addVegetableToArray (Vegetable newVegetable){
@@ -35,6 +36,7 @@ public class Store {
             array [i] = vegetables [i];
         }
         array[array.length-1] = newVegetable;
+        vegetables = array;
     }
 
     public void addWaterToArray (Water newWater){
@@ -43,6 +45,7 @@ public class Store {
             array [i] = waters [i];
         }
         array[array.length-1] = newWater;
+        waters = array;
     }
 
 
