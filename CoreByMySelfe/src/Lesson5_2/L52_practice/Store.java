@@ -48,8 +48,24 @@ public class Store {
         waters = newArray;
     }
 
+    public Product findProductById (int id, Product [] products){
+
+        for (int i = 0; i < products.length; i++) {
+            if (products [i].getId() == id){
+                return products[i];
+            }
+        }return products [0];
+    }
+
+    public void byCurrentProduct (Product [] products, Product product){
 
 
+    }
+
+    public void deleteProductFromArray (Product [] products, Product product){
+
+
+    }
 
     public Product [] findCategoryArray(String category){
         if (category == "Smartfone" ) {
@@ -59,4 +75,11 @@ public class Store {
         } else return waters;
 
     }
+
+    public void showCategoryArray (Product [] array){
+        for (int i = 0; i < array.length; i++) {
+            array[i].show(); //вместо вывода в консоль сделать вывод в окно
+        }
+    }
+
 }

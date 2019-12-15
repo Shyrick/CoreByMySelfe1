@@ -1,9 +1,6 @@
 package Lesson5_2.L52_practice;
 
-import Lesson5_2.L52_practice.Products.IdCeeper;
-import Lesson5_2.L52_practice.Products.Smartfone;
-import Lesson5_2.L52_practice.Products.Vegetable;
-import Lesson5_2.L52_practice.Products.Water;
+import Lesson5_2.L52_practice.Products.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -19,10 +16,12 @@ public class WindowStore {
 
     IdCeeper idCeeper;
     Store store;
+    Product curentProduct;
 
-    Text text1, text2, text3, text4, text5, text6;
-    TextField tfName, tfAmount, tfDescription, tfPrice, tfShelfLife;
-    Button buttonSave;
+    Text text1, text2, text3, text4, text5, text6, text7;
+    TextField tfName, tfAmount, tfDescription, tfPrice, tfShelfLife, tfFindId;
+    Button buttonSave, buttonChoice, buttonBuy, buttonToMain;
+    ChoiceBox<String> productChoiceBox;
 
     private static final int WIDTH = 800;
     private static final int HEIGTH = 700;
@@ -34,6 +33,11 @@ public class WindowStore {
     public WindowStore(IdCeeper idCeeper, Store store) {
         this.idCeeper = idCeeper;
         this.store = store;
+        this.curentProduct = null;
+    }
+
+    public Product getCurentProduct() {
+        return curentProduct;
     }
 
     void windowSetup(Stage primaryStage) {
@@ -49,7 +53,9 @@ public class WindowStore {
 
     public void windowFormsSetup (Pane frontRoot){
 
-        frontRoot.getChildren().clear();
+        text1 = new Text("Выберите категорию");
+        text1.setTranslateX(70);
+        text1.setTranslateY(120);
 
         text2 = new Text("Наименование");
         text2.setTranslateX(50);
@@ -86,13 +92,42 @@ public class WindowStore {
         tfShelfLife.setTranslateX(50);
         tfShelfLife.setTranslateY(320);
 
-        this.buttonSave = new Button("Сохранить");
+        text6 = new Text("Введите id нужного товара");
+        text6.setTranslateX(50);
+        text6.setTranslateY(500);
+        this.tfFindId = new TextField();
+        tfFindId.setTranslateX(50);
+        tfFindId.setTranslateY(520);
+
+        buttonSave = new Button("Сохранить");
         buttonSave.setTranslateX(50);
         buttonSave.setTranslateY(350);
 
+        buttonChoice = new Button("Выбрать");
+        buttonChoice.setTranslateX(250);
+        buttonChoice.setTranslateY(520);
+
+        buttonBuy = new Button("Купить");
+        buttonBuy.setTranslateX(50);
+        buttonBuy.setTranslateY(100);
+
+        buttonToMain = new Button("На главную");
+        buttonToMain.setTranslateX(250);
+        buttonToMain.setTranslateY(150);
+
+        //ChoiceBox категорий
+        String [] categoryArray = store.products;
+        ObservableList<String> category = FXCollections.observableArrayList(categoryArray);
+        productChoiceBox = new ChoiceBox<String>(category);
+//        productChoiceBox.setValue(store.products [0]); // значение по умолчанию
+        productChoiceBox.setTooltip(new Tooltip("Select the category")); // выпадающее окно при наведении
+        productChoiceBox.setTranslateX(70);
+        productChoiceBox.setTranslateY(150);
     }
 
     public void helloyMenu (Pane frontRoot){
+        frontRoot.getChildren().clear();
+        windowFormsSetup(frontRoot);
         Text text = new Text("Добро пожаловать в Магазин !!!");
         text.setTranslateX(30);
         text.setTranslateY(30);
@@ -109,7 +144,9 @@ public class WindowStore {
             text1.setTranslateY(140);
 
             frontRoot.getChildren().addAll(text1);
+            toMainButton(frontRoot); // Кнопка "на главную"
             productChoiceBox(frontRoot); // выбор категории товара
+
         });
 
         Button button2 = new Button("Добавить товар");
@@ -129,27 +166,18 @@ public class WindowStore {
     public void productChoiceBox(Pane frontRoot) {
 
         frontRoot.getChildren().clear();
-        Text text1 = new Text("Выберите категорию");
-        text1.setTranslateX(30);
-        text1.setTranslateY(30);
-
-        String [] arr = store.products;
-        ObservableList<String> products = FXCollections.observableArrayList(arr);
-        ChoiceBox<String> productChoiceBox = new ChoiceBox<String>(products);
-//        productChoiceBox.setValue(store.products [0]); // значение по умолчанию
-        productChoiceBox.setTooltip(new Tooltip("Select the category")); // выпадающее окно при наведении
-        productChoiceBox.setTranslateX(70);
-        productChoiceBox.setTranslateY(90);
-
         frontRoot.getChildren().addAll(productChoiceBox, text1);
+        toMainButton(frontRoot);
 
         productChoiceBox.setOnAction(event -> {
-//            String str = productChoiceBox.getValue();
-//            if (str == store.products[0]){
-//                createSmartfone(frontRoot);
-//            } else if (str == store.products[1]){
-//                createVegetable(frontRoot);
-//            } else createWater(frontRoot);
+            String str = productChoiceBox.getValue();
+            Product [] products = store.findCategoryArray(str);
+            // Выводим список товаров выбранной категории в консоль
+            store.showCategoryArray(products);
+            // Вывдим поле и кнопу для выбора товара по id
+//            frontRoot.getChildren().clear();
+            makeChoice(frontRoot, products);
+
 
 
         });
@@ -158,17 +186,6 @@ public class WindowStore {
     public void newProductChoiceBox (Pane frontRoot) {
 
         frontRoot.getChildren().clear();
-        Text text1 = new Text("Выберите категорию");
-        text1.setTranslateX(70);
-        text1.setTranslateY(120);
-
-        String [] arr = store.products;
-        ObservableList<String> products = FXCollections.observableArrayList(arr);
-        ChoiceBox<String> productChoiceBox = new ChoiceBox<String>(products);
-//        productChoiceBox.setValue(store.products [0]); // значение по умолчанию
-        productChoiceBox.setTooltip(new Tooltip("Select new the category")); // выпадающее окно при наведении
-        productChoiceBox.setTranslateX(70);
-        productChoiceBox.setTranslateY(150);
 
         frontRoot.getChildren().addAll(productChoiceBox, text1);
 
@@ -239,7 +256,7 @@ public class WindowStore {
             text1.setTranslateY(30);
             frontRoot.getChildren().addAll(text1);
 
-            twoButtons (frontRoot); // Вызываем кнопки Добавить товар и Выбрать товар
+            productAddAndChouseButtons(frontRoot); // Вызываем кнопки Добавить товар и Выбрать товар
 
         });
 
@@ -268,7 +285,7 @@ public class WindowStore {
             text1.setTranslateY(30);
             frontRoot.getChildren().addAll(text1);
 
-            twoButtons (frontRoot);// Вызываем кнопки Добавить товар и Выбрать товар
+            productAddAndChouseButtons(frontRoot);// Вызываем кнопки Добавить товар и Выбрать товар
 
         });
 
@@ -295,13 +312,27 @@ public class WindowStore {
             text1.setTranslateY(30);
             frontRoot.getChildren().addAll(text1);
 
-            twoButtons (frontRoot);// Вызываем кнопки Добавить товар и Выбрать товар
+            productAddAndChouseButtons(frontRoot);// Вызываем кнопки Добавить товар и Выбрать товар
+
+        });
+    }
+
+    public void makeChoice (Pane frontRoot, Product [] products){
+//        windowFormsSetup (frontRoot);
+        frontRoot.getChildren().addAll(text6, tfFindId, buttonChoice);
+
+        buttonChoice.setOnAction(event -> {
+            int id = Integer.valueOf(tfFindId.getText());
+            curentProduct = store.findProductById(id, products);
+            frontRoot.getChildren().clear();
+            curentProduct.show();
+
 
         });
     }
 
     // Метод выводит 2 кнопки Добавить товар и Выбрать товар
-    public void twoButtons (Pane frontRoot){
+    public void productAddAndChouseButtons(Pane frontRoot){
         Button button1 = new Button("Добавить товар");
         button1.setTranslateX(50);
         button1.setTranslateY(100);
@@ -317,6 +348,22 @@ public class WindowStore {
         });
 
         frontRoot.getChildren().addAll(button1, button2);
+    }
+
+    public void toMainButton(Pane frontRoot){
+
+        buttonToMain.setOnAction(event1 ->  {
+            helloyMenu (frontRoot);
+        });
+
+        frontRoot.getChildren().addAll(buttonToMain);
+    }
+
+    public void buyButton (Pane frontRoot, Product [] products){
+        buttonBuy.setOnAction(event ->  {
+            store.byCurrentProduct( products, getCurentProduct() );
+        });
+
     }
 
 }

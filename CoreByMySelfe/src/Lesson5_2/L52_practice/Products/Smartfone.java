@@ -22,6 +22,7 @@ public class Smartfone  extends Product {
     }
 
     public  void show (){
+
         System.out.println(toString());
     }
 

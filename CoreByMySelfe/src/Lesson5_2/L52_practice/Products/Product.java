@@ -18,5 +18,11 @@ public abstract class Product {
         this.price = price;
     }
 
+    public int getId() {
+        return id;
+    }
+
+
+
     public abstract void show();
 }
