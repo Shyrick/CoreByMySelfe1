@@ -51,7 +51,7 @@ public class WindowStore {
         primaryStage.titleProperty();
     }
 
-    public void windowFormsSetup (Pane frontRoot){
+    public void windowTextSetup (Pane frontRoot) {
 
         text1 = new Text("Выберите категорию");
         text1.setTranslateX(70);
@@ -92,13 +92,15 @@ public class WindowStore {
         tfShelfLife.setTranslateX(50);
         tfShelfLife.setTranslateY(320);
 
-        text6 = new Text("Введите id нужного товара");
-        text6.setTranslateX(50);
-        text6.setTranslateY(500);
+        text7 = new Text("Введите id нужного товара");
+        text7.setTranslateX(50);
+        text7.setTranslateY(500);
         this.tfFindId = new TextField();
         tfFindId.setTranslateX(50);
         tfFindId.setTranslateY(520);
+    }
 
+    public void windowButtonsSetup (Pane frontRoot) {
         buttonSave = new Button("Сохранить");
         buttonSave.setTranslateX(50);
         buttonSave.setTranslateY(350);
@@ -114,7 +116,9 @@ public class WindowStore {
         buttonToMain = new Button("На главную");
         buttonToMain.setTranslateX(250);
         buttonToMain.setTranslateY(150);
+    }
 
+    public void windowChoiceBoxSetup (Pane frontRoot){
         //ChoiceBox категорий
         String [] categoryArray = store.products;
         ObservableList<String> category = FXCollections.observableArrayList(categoryArray);
@@ -126,8 +130,9 @@ public class WindowStore {
     }
 
     public void helloyMenu (Pane frontRoot){
+
         frontRoot.getChildren().clear();
-        windowFormsSetup(frontRoot);
+
         Text text = new Text("Добро пожаловать в Магазин !!!");
         text.setTranslateX(30);
         text.setTranslateY(30);
@@ -165,6 +170,8 @@ public class WindowStore {
 
     public void productChoiceBox(Pane frontRoot) {
 
+        windowChoiceBoxSetup(frontRoot);
+        windowTextSetup(frontRoot);
         frontRoot.getChildren().clear();
         frontRoot.getChildren().addAll(productChoiceBox, text1);
         toMainButton(frontRoot);
@@ -176,7 +183,7 @@ public class WindowStore {
             store.showCategoryArray(products);
             // Вывдим поле и кнопу для выбора товара по id
 //            frontRoot.getChildren().clear();
-            makeChoice(frontRoot, products);
+//            makeChoice(frontRoot, products);
 
 
 
@@ -186,7 +193,8 @@ public class WindowStore {
     public void newProductChoiceBox (Pane frontRoot) {
 
         frontRoot.getChildren().clear();
-
+        windowChoiceBoxSetup(frontRoot);
+        windowTextSetup(frontRoot);
         frontRoot.getChildren().addAll(productChoiceBox, text1);
 
         productChoiceBox.setOnAction(event -> {
@@ -196,50 +204,51 @@ public class WindowStore {
             } else if (str == store.products[1]){
                 createVegetable(frontRoot);
             } else createWater(frontRoot);
-
         });
     }
 
     public void createSmartfoneForm(Pane frontRoot) {
+        frontRoot.getChildren().clear();
+        windowTextSetup(frontRoot);
+        windowButtonsSetup(frontRoot);
+       Text text = new Text("Новый товар в категорию Смартфон");
+        text.setTranslateX(30);
+        text.setTranslateY(30);
 
-        text1 = new Text("Новый товар в категорию Смартфон");
-        text1.setTranslateX(30);
-        text1.setTranslateY(30);
-
-        frontRoot.getChildren().addAll(text1, text2, text3, text4, text5,
+        frontRoot.getChildren().addAll(text, text2, text3, text4, text5,
                 tfAmount, tfDescription, tfName, tfPrice, buttonSave);
-
-
     }
 
     public void createVegetableForm(Pane frontRoot) {
 
-        text1 = new Text("Новый товар в категорию Овощи");
-        text1.setTranslateX(30);
-        text1.setTranslateY(30);
+        frontRoot.getChildren().clear();
+        windowTextSetup(frontRoot);
+        windowButtonsSetup(frontRoot);
+       Text text = new Text("Новый товар в категорию Овощи");
+        text.setTranslateX(30);
+        text.setTranslateY(30);
 
-        frontRoot.getChildren().addAll(text1, text2, text3, text4, text5, text6,
+        frontRoot.getChildren().addAll(text, text2, text3, text4, text5, text6,
                 tfAmount, tfDescription, tfName, tfPrice, tfShelfLife, buttonSave);
 
     }
 
     public void createWaterForm(Pane frontRoot) {
 
-        text1 = new Text("Новый товар в категорию Вода");
-        text1.setTranslateX(30);
-        text1.setTranslateY(30);
+        frontRoot.getChildren().clear();
+        windowTextSetup(frontRoot);
+        windowButtonsSetup(frontRoot);
+        Text text = new Text("Новый товар в категорию Вода");
+        text.setTranslateX(30);
+        text.setTranslateY(30);
 
-        frontRoot.getChildren().addAll(text1, text2, text3, text4, text5,
+        frontRoot.getChildren().addAll(text, text2, text3, text4, text5,
                 tfAmount, tfDescription, tfName, tfPrice, buttonSave);
-
-
     }
 
     public void createSmartfone(Pane frontRoot){
         // ввод данных в текстфилды для создания объекта смартфон
-        windowFormsSetup (frontRoot);
         createSmartfoneForm(frontRoot);
-
         // По нажатию кнопки Сохранить
         // считываем даннык из формы и создаем объкт Смарфон
         buttonSave.setOnAction(event -> {
@@ -257,18 +266,14 @@ public class WindowStore {
             frontRoot.getChildren().addAll(text1);
 
             productAddAndChouseButtons(frontRoot); // Вызываем кнопки Добавить товар и Выбрать товар
-
         });
 
     }
 
     public void createVegetable(Pane frontRoot){
         // ввод данных в техтфилды для создания объекта Овощи
-        windowFormsSetup (frontRoot);
         createVegetableForm(frontRoot);
-
         // Считываем даннык из формы и создаем объкт Овощ
-
         buttonSave.setOnAction(event -> {
             String name =  tfName.getText();
             int amount = Integer.valueOf(tfAmount.getText());
@@ -293,11 +298,8 @@ public class WindowStore {
 
     public void createWater(Pane frontRoot){
         // ввод данных в техтфилды для создания объекта вода
-        windowFormsSetup (frontRoot);
-        createVegetableForm(frontRoot);
-
+        createWaterForm(frontRoot);
         // Считываем даннык из формы и создаем объкт Вода
-
         buttonSave.setOnAction(event -> {
             String name =  tfName.getText();
             int amount = Integer.valueOf(tfAmount.getText());
@@ -320,7 +322,6 @@ public class WindowStore {
     public void makeChoice (Pane frontRoot, Product [] products){
 //        windowFormsSetup (frontRoot);
         frontRoot.getChildren().addAll(text6, tfFindId, buttonChoice);
-
         buttonChoice.setOnAction(event -> {
             int id = Integer.valueOf(tfFindId.getText());
             curentProduct = store.findProductById(id, products);
@@ -346,12 +347,11 @@ public class WindowStore {
         button2.setOnAction(event1 ->  {
             productChoiceBox (frontRoot);
         });
-
         frontRoot.getChildren().addAll(button1, button2);
     }
 
     public void toMainButton(Pane frontRoot){
-
+        windowButtonsSetup(frontRoot);
         buttonToMain.setOnAction(event1 ->  {
             helloyMenu (frontRoot);
         });
