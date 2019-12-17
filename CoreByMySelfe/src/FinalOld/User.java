@@ -63,4 +63,6 @@ public class User extends UserController{
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
+
+
 }

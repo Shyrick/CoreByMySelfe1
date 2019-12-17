@@ -12,6 +12,7 @@ public class Store {
     Vegetable[] vegetables;
     Water[] waters;
     String [] products;
+    Product curentProduct;
 
     public Store(double money, Smartfone[] smartfones, Vegetable[] vegetables, Water[] waters) {
         this.money = money;
@@ -19,6 +20,11 @@ public class Store {
         this.vegetables = vegetables;
         this.waters = waters;
         this.products = new String[]{"Smartfone", "Vegetables", "Water" };
+        this.curentProduct = null;
+    }
+
+    public Product getCurentProduct() {
+        return curentProduct;
     }
 
     public void addSmartfoneToArray (Smartfone newSmartfone){
