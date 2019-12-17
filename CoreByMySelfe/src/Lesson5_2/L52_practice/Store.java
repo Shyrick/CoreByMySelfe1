@@ -54,7 +54,8 @@ public class Store {
         waters = newArray;
     }
 
-    public Product findProductById (int id, Product [] products){
+    public Product findProductById (Product [] products, int id){
+//        Если введенного Id нет, то выводит первый товар в массиве
 
         for (int i = 0; i < products.length; i++) {
             if (products [i].getId() == id){
@@ -63,14 +64,9 @@ public class Store {
         }return products [0];
     }
 
-    public void byCurrentProduct (Product [] products, Product product){
-
-
-    }
-
-    public void deleteProductFromArray (Product [] products, Product product){
-
-
+    public void buyCurrentProduct (Product [] products, Product curentProduct){
+//В массиве товаров уменьшаем колличестов у текущего товара на 1
+        findProductById(products, curentProduct.getId()).amount --;
     }
 
     public Product [] findCategoryArray(String category){
@@ -83,6 +79,7 @@ public class Store {
     }
 
     public void showCategoryArray (Product [] array){
+        System.out.println();
         for (int i = 0; i < array.length; i++) {
             array[i].show(); //вместо вывода в консоль сделать вывод в окно
         }

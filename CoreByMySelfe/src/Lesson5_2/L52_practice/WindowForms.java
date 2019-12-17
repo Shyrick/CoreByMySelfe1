@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class WindowForms {
 
     Store store;
-    Text createFormName; // text2, text3, text4, text5, text6, text7;
+    Text createFormName;
     TextField tfName, tfAmount, tfDescription, tfPrice, tfShelfLife, tfFindId;
     Button saveButton, choiceButton, buyButton, toMainButton, toTheShopButton, addProductButton;
     ChoiceBox<String> productChoiceBox;
@@ -41,6 +41,21 @@ public class WindowForms {
         primaryStage.titleProperty();
     }
 
+    public void helloyMenuSetup (Pane frontRoot){
+        frontRoot.getChildren().clear();
+
+        Text text1 = new Text("Добро пожаловать в Магазин !!!");
+        text1.setTranslateX(30);
+        text1.setTranslateY(30);
+        Font font = new Font(22);
+        text1.setFont(font);
+
+        toTheShopButtonSetup(frontRoot);
+        addProductButtonSetup(frontRoot);
+
+        frontRoot.getChildren().addAll(text1);
+    }
+
     public void toTheShopButtonSetup (Pane frontRoot){
         this.toTheShopButton = new Button("В магазин");
         toTheShopButton.setTranslateX(70);
@@ -57,18 +72,48 @@ public class WindowForms {
         frontRoot.getChildren().addAll(addProductButton);
     }
 
-    public void choiceButtonSetup (Pane frontRoot) {
+    public void choiceFieldAndButtonSetup (Pane frontRoot) {
+
+        Text text7 = new Text("Введите id товара в выбранной категории");
+        text7.setTranslateX(50);
+        text7.setTranslateY(300);
+        this.tfFindId = new TextField();
+        tfFindId.setTranslateX(50);
+        tfFindId.setTranslateY(320);
         this.choiceButton = new Button("Выбрать");
         choiceButton.setTranslateX(250);
-        choiceButton.setTranslateY(520);
-        frontRoot.getChildren().addAll(choiceButton);
+        choiceButton.setTranslateY(320);
+        frontRoot.getChildren().addAll(text7, tfFindId, choiceButton);
     }
 
-    public void buyButtonSetup (Pane frontRoot) {
+    public void buyMenuSetup(Pane frontRoot) {
+
+        frontRoot.getChildren().clear();
+        Text text1 = new Text("Вы выбрали товар:");
+        text1.setTranslateX(30);
+        text1.setTranslateY(30);
+        Font font = new Font(16);
+        text1.setFont(font);
+
+        Text text2 = new Text(store.curentProduct.toString());
+        text2.setTranslateX(30);
+        text2.setTranslateY(60);
+
         this.buyButton = new Button("Купить");
         buyButton.setTranslateX(50);
-        buyButton.setTranslateY(100);
-        frontRoot.getChildren().addAll(buyButton);
+        buyButton.setTranslateY(150);
+
+        if (store.curentProduct.getAmount() != 0){
+
+            frontRoot.getChildren().addAll( buyButton);
+        }else {
+            Text text3 = new Text("Данный товар отсутсвует!!!");
+            text3.setTranslateX(30);
+            text3.setTranslateY(90);
+            text3.setFont(font);
+            frontRoot.getChildren().addAll(text3);
+        }
+        frontRoot.getChildren().addAll(text1, text2);
     }
 
     public void toMainButtonSetup(Pane frontRoot) {
@@ -76,23 +121,6 @@ public class WindowForms {
         toMainButton.setTranslateX(250);
         toMainButton.setTranslateY(150);
         frontRoot.getChildren().addAll(toMainButton);
-    }
-
-    public void helloyMenuSetup (Pane frontRoot){
-        frontRoot.getChildren().clear();
-
-        Text text1 = new Text("Добро пожаловать в Магазин !!!");
-        text1.setTranslateX(30);
-        text1.setTranslateY(30);
-        Font font = new Font(22);
-        text1.setFont(font);
-
-        toTheShopButtonSetup(frontRoot);
-        addProductButtonSetup(frontRoot);
-
-        frontRoot.getChildren().addAll(text1);
-
-
     }
 
     public void productChoiceBoxSetup (Pane frontRoot){
@@ -110,6 +138,16 @@ public class WindowForms {
         this.productChoiceBox.setTranslateY(150);
 
         frontRoot.getChildren().addAll(text1, productChoiceBox);
+    }
+
+    public void youHaveBuyItMenuSetup (Pane frontRoot){
+        Text text1 = new Text("Спасибо за покупку !!!");
+        text1.setTranslateX(30);
+        text1.setTranslateY(30);
+        Font font = new Font(22);
+        text1.setFont(font);
+
+        frontRoot.getChildren().addAll(text1);
     }
 
     public void createSmartfoneForm(Pane frontRoot) {
@@ -150,7 +188,7 @@ public class WindowForms {
         this.saveButton = new Button("Сохранить");
         saveButton.setTranslateX(50);
         saveButton.setTranslateY(350);
-        frontRoot.getChildren().addAll(saveButton);
+
 
         frontRoot.getChildren().addAll(createFormName, text2, text3, text4, text5,
                 tfAmount, tfDescription, tfName, tfPrice, saveButton);
@@ -163,7 +201,7 @@ public class WindowForms {
         Text text6 = new Text("Срок годности");
         text6.setTranslateX(50);
         text6.setTranslateY(300);
-        TextField tfShelfLife = new TextField();
+        this.tfShelfLife = new TextField();
         tfShelfLife.setTranslateX(50);
         tfShelfLife.setTranslateY(320);
 

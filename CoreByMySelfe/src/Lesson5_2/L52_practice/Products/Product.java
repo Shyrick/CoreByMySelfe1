@@ -22,7 +22,9 @@ public abstract class Product {
         return id;
     }
 
-
+    public int getAmount() {
+        return amount;
+    }
 
     public abstract void show();
 }

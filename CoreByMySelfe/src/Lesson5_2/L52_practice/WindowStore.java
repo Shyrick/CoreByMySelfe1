@@ -10,36 +10,11 @@ public class WindowStore {
     Store store;
     WindowForms windowForms;
 
-
-//    Text text1, text2, text3, text4, text5, text6, text7;
-//    TextField tfName, tfAmount, tfDescription, tfPrice, tfShelfLife, tfFindId;
-//    Button buttonSave, buttonChoice, buttonBuy, buttonToMain;
-//    ChoiceBox<String> productChoiceBox;
-
-
-
     public WindowStore(IdCeeper idCeeper, Store store,  WindowForms windowForms) {
         this.idCeeper = idCeeper;
         this.store = store;
         this.windowForms = windowForms;
     }
-
-
-
-
-
-//    public void windowTextSetup (Pane frontRoot) {
-//
-//        text7 = new Text("Введите id нужного товара");
-//        text7.setTranslateX(50);
-//        text7.setTranslateY(500);
-//        this.tfFindId = new TextField();
-//        tfFindId.setTranslateX(50);
-//        tfFindId.setTranslateY(520);
-//    }
-
-    
-
 
     public void helloyMenu (Pane frontRoot){
 
@@ -64,11 +39,7 @@ public class WindowStore {
             Product [] products = store.findCategoryArray(str);
             // Выводим список товаров выбранной категории в консоль
             store.showCategoryArray(products);
-
-            // Вывдим поле и кнопу для выбора товара по id
-//            frontRoot.getChildren().clear();
-//            makeChoice(frontRoot, products);
-
+            makeChoice(frontRoot, products);
         });
     }
 
@@ -161,16 +132,14 @@ public class WindowStore {
     }
 
     public void makeChoice (Pane frontRoot, Product [] products){
-////        windowFormsSetup (frontRoot);
-//        frontRoot.getChildren().addAll(text6, tfFindId, buttonChoice);
-//        buttonChoice.setOnAction(event -> {
-//            int id = Integer.valueOf(tfFindId.getText());
-//            curentProduct = store.findProductById(id, products);
-//            frontRoot.getChildren().clear();
-//            curentProduct.show();
-//
-//
-//        });
+
+        windowForms.choiceFieldAndButtonSetup(frontRoot);//
+        windowForms.choiceButton.setOnAction(event -> {
+            int id = Integer.valueOf(windowForms.tfFindId.getText());
+            store.curentProduct = store.findProductById(products, id);
+            buyMenu(frontRoot, products);
+        });
+
     }
 
     // Метод выводит 2 кнопки: В магазин и Добавить товар
@@ -193,11 +162,17 @@ public class WindowStore {
         });
     }
 
-    public void buyButton (Pane frontRoot, Product [] products){
-//        buttonBuy.setOnAction(event ->  {
-//            store.byCurrentProduct( products, getCurentProduct() );
-//        });
+    public void buyMenu (Pane frontRoot, Product [] products){
+        windowForms.buyMenuSetup(frontRoot);
+        windowForms.buyButton.setOnAction(event1 -> {
+            store.buyCurrentProduct(products, store.curentProduct);
 
+            frontRoot.getChildren().clear();
+            windowForms.youHaveBuyItMenuSetup(frontRoot);
+            helloy2Menu(frontRoot);
+        });
+
+       toMainButton(frontRoot);
     }
 
 }
